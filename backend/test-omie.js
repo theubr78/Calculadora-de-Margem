@@ -7,12 +7,12 @@ async function testOMIE() {
     "param": [{
       "cEAN": "",
       "nIdProduto": 0,
-      "cCodigo": "QCYT13",
+      "cCodigo": "000000000000223039",
       "xCodigo": "",
       "dDia": "11/08/2025"
     }],
-    "app_key": "5390588942739",
-    "app_secret": "6958317ffdd43775cbd1039bffcd4ac6"
+    "app_key": "000000000000223039",
+    "app_secret": "5d66d0a5bd65008a48cfab8de5ad3724"
   };
 
   try {

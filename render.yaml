@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: omie-profit-calculator-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: OMIE_APP_KEY
+        sync: false
+      - key: OMIE_APP_SECRET
+        sync: false
+      - key: OMIE_API_URL
+        value: https://app.omie.com.br/api/v1/estoque/resumo/
+      - key: FRONTEND_URL
+        sync: false
+    healthCheckPath: /api/health
