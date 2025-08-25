@@ -63,18 +63,19 @@ git push origin main
 1. Acesse [vercel.com](https://vercel.com) e faça login com GitHub
 2. Clique em "New Project"
 3. Importe seu repositório GitHub
-4. Configure:
-   - **Framework Preset**: `Create React App`
-   - **Root Directory**: `frontend`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `build`
+4. **IMPORTANTE**: Selecione a raiz do projeto (Calculadora-de-Margem), NÃO a pasta frontend
+5. Configure:
+   - **Framework Preset**: `Other`
+   - **Root Directory**: `.` (raiz do projeto)
+   - **Build Command**: `cd frontend && npm install && npm run build`
+   - **Output Directory**: `frontend/build`
 
-5. Configure as variáveis de ambiente:
+6. Configure as variáveis de ambiente:
    - `REACT_APP_API_URL`: `https://sua-url-backend.onrender.com/api`
 
-6. Clique em "Deploy"
-7. Aguarde o deploy (2-5 minutos)
-8. Anote a URL gerada (ex: `https://omie-profit-calculator.vercel.app`)
+7. Clique em "Deploy"
+8. Aguarde o deploy (2-5 minutos)
+9. Anote a URL gerada (ex: `https://omie-profit-calculator.vercel.app`)
 
 ### 4. Configuração Final
 
