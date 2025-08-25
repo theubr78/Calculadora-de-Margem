@@ -49,8 +49,8 @@ git push origin main
 5. Configure as variáveis de ambiente:
    - `NODE_ENV`: `production`
    - `PORT`: `10000` (automático no Render)
-   - `OMIE_APP_KEY`: `3473640526356`
-   - `OMIE_APP_SECRET`: `5d66d0a5bd65008a48cfab8de5ad3724`
+   - `OMIE_APP_KEY`: `Seu app key`
+   - `OMIE_APP_SECRET`: `seu app secret`
    - `OMIE_API_URL`: `https://app.omie.com.br/api/v1/estoque/resumo/`
    - `FRONTEND_URL`: (será preenchido após deploy do frontend)
 

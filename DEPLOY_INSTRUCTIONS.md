@@ -25,8 +25,8 @@
    ```
    NODE_ENV=production
    PORT=10000
-   OMIE_APP_KEY=5390588942739
-   OMIE_APP_SECRET=6958317ffdd43775cbd1039bffcd4ac6
+   OMIE_APP_KEY=sua app key
+   OMIE_APP_SECRET=sua app secret
    OMIE_API_URL=https://app.omie.com.br/api/v1/estoque/resumo/
    FRONTEND_URL=(deixe vazio por enquanto)
    ```

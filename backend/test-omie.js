@@ -11,7 +11,7 @@ async function testOMIE() {
       "xCodigo": "",
       "dDia": "11/08/2025"
     }],
-    "app_key": "000000000000223039",
+    "app_key": "3473640526356",
     "app_secret": "5d66d0a5bd65008a48cfab8de5ad3724"
   };
 

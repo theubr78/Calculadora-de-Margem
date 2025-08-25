@@ -5,7 +5,7 @@ const testBackendAPI = () => {
     console.log('🧪 Testando API do backend com produto real...\n');
 
     const requestBody = JSON.stringify({
-        productCode: "QCYT13",
+        productCode: "000000000000223039",
         date: "25/08/2025"
     });
 

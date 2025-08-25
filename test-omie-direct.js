@@ -7,14 +7,14 @@ const testOMIEDirect = () => {
     const requestBody = JSON.stringify({
         call: "ObterEstoqueProduto",
         param: [{
-            cCodigo: "QCYT13",
+            cCodigo: "000000000000223039",
             nIdProduto: 0,
             cEAN: "",
             xCodigo: "",
             dDia: "11/08/2025"
         }],
-        app_key: "5390588942739",
-        app_secret: "6958317ffdd43775cbd1039bffcd4ac6"
+        app_key: "3473640526356",
+        app_secret: "5d66d0a5bd65008a48cfab8de5ad3724"
     });
 
     const options = {
