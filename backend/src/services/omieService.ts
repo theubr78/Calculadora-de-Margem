@@ -12,6 +12,12 @@ export class OMIEService {
     this.appKey = process.env.OMIE_APP_KEY || '';
     this.appSecret = process.env.OMIE_APP_SECRET || '';
 
+    console.log('[OMIE] Service initialized with:', {
+      apiUrl: this.apiUrl ? 'Loaded' : 'Missing',
+      appKey: this.appKey ? 'Loaded' : 'Missing',
+      appSecret: this.appSecret ? 'Loaded' : 'Missing',
+    });
+
     if (!this.apiUrl || !this.appKey || !this.appSecret) {
       throw new Error('OMIE API credentials not configured');
     }
