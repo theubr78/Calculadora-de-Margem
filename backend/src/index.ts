@@ -18,27 +18,9 @@ const generateRequestId = () => `req_${Date.now()}_${Math.random().toString(36).
 // Trust proxy for rate limiting behind reverse proxy
 app.set('trust proxy', 1);
 
-// CORS configuration (supports multiple origins via comma-separated FRONTEND_URL)
-const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:3000')
-  .split(',')
-  .map(o => o.trim())
-  .filter(Boolean);
-
-console.log('[CORS] Allowed Origins:', allowedOrigins);
-
+// CORS configuration
 const corsOptions = {
-  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
-      console.error(`[CORS] Blocked Origin: ${origin}. Allowed origins are:`, allowedOrigins);
-      return callback(new Error(msg), false);
-    }
-    
-    return callback(null, true);
-  },
+  origin: '*', // Allow all origins
   credentials: true,
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
