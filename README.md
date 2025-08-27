@@ -23,25 +23,7 @@ Sistema web profissional para cálculo de margem de lucro integrado à API do OM
 - Integração segura com API OMIE
 - Rate limiting e validações
 
-## 📦 Instalação
 
-1. Clone o repositório
-2. Instale as dependências:
-```bash
-npm run install:all
-```
-
-3. Configure as variáveis de ambiente no backend:
-```bash
-cd backend
-cp .env.example .env
-# Edite o arquivo .env com suas credenciais OMIE
-```
-
-4. Execute o projeto em modo desenvolvimento:
-```bash
-npm run dev
-```
 
 ## 🔧 Configuração
 
@@ -50,7 +32,7 @@ npm run dev
 ```env
 OMIE_APP_KEY=sua_app_key_aqui
 OMIE_APP_SECRET=seu_app_secret_aqui
-OMIE_API_URL=https://app.omie.com.br/api/v1/estoque/resumo/
+OMIE_API_URL=
 PORT=3001
 NODE_ENV=development
 FRONTEND_URL=http://localhost:3000
