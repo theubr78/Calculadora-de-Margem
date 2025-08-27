@@ -1,0 +1,265 @@
+/* Accessibility Styles */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Show screen reader content when focused */
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Focus indicators */
+.focus-visible:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-primary {
+    background-color: #000000 !important;
+  }
+  
+  .text-primary {
+    color: #000000 !important;
+  }
+  
+  .border-gray-300 {
+    border-color: #000000 !important;
+  }
+  
+  .bg-gray-50 {
+    background-color: #ffffff !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus trap styles */
+.focus-trap {
+  position: relative;
+}
+
+.focus-trap:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Skip link styles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #3b82f6;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Keyboard navigation indicators */
+.keyboard-user *:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.mouse-user *:focus {
+  outline: none;
+}
+
+/* ARIA live region styles */
+[aria-live] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Error states */
+[aria-invalid="true"] {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 1px #ef4444;
+}
+
+/* Required field indicators */
+[aria-required="true"]::after {
+  content: " *";
+  color: #ef4444;
+}
+
+/* Button states */
+button[aria-pressed="true"] {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+button[aria-expanded="true"]::after {
+  content: " (expandido)";
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Loading states */
+[aria-busy="true"] {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+/* Tooltip styles */
+[role="tooltip"] {
+  position: absolute;
+  z-index: 1000;
+  padding: 4px 8px;
+  background: #1f2937;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+/* Dialog/Modal styles */
+[role="dialog"] {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+/* Backdrop for modals */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Progress indicators */
+[role="progressbar"] {
+  background: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+[role="progressbar"]::before {
+  content: '';
+  display: block;
+  height: 100%;
+  background: #3b82f6;
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+/* Status indicators */
+[role="status"] {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+[role="alert"] {
+  padding: 12px;
+  border-radius: 6px;
+  border: 2px solid #ef4444;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+/* Table accessibility */
+table[role="table"] caption {
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+th[scope="col"],
+th[scope="row"] {
+  font-weight: bold;
+}
+
+/* Form fieldset styles */
+fieldset {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 8px;
+}
+
+/* Color contrast helpers */
+.text-contrast-high {
+  color: #000000;
+}
+
+.bg-contrast-high {
+  background-color: #ffffff;
+}
+
+.border-contrast-high {
+  border-color: #000000;
+}
+
+/* Print styles for accessibility */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+}
