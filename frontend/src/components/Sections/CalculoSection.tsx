@@ -26,7 +26,7 @@ const CalculoSection: React.FC = () => {
         subtitle="Digite o código do produto para consultar informações no OMIE"
         padding="lg"
         shadow="md"
-        className="bg-surface border border-gray-700"
+        className="bg-gray-800 border border-gray-600"
       >
         <ProductSearch />
       </Card>
@@ -38,7 +38,7 @@ const CalculoSection: React.FC = () => {
           subtitle="Dados obtidos do sistema OMIE"
           padding="lg"
           shadow="md"
-          className="bg-surface border border-gray-700"
+          className="bg-gray-800 border border-gray-600"
         >
           <ProductInfo productData={state.productData} />
         </Card>
@@ -52,7 +52,7 @@ const CalculoSection: React.FC = () => {
             subtitle="Insira o preço de venda para calcular a margem"
             padding="lg"
             shadow="md"
-            className="bg-surface border border-gray-700"
+            className="bg-gray-800 border border-gray-600"
           >
             <ProfitCalculator />
           </Card>
@@ -64,7 +64,7 @@ const CalculoSection: React.FC = () => {
               subtitle="Análise detalhada da margem de lucro"
               padding="lg"
               shadow="md"
-              className="bg-surface border border-gray-700"
+              className="bg-gray-800 border border-gray-600"
             >
               <ResultsDisplay 
                 productData={state.productData}
@@ -82,7 +82,7 @@ const CalculoSection: React.FC = () => {
           subtitle="Compare diferentes estratégias de preço"
           padding="lg"
           shadow="md"
-          className="bg-surface border border-gray-700"
+          className="bg-gray-800 border border-gray-600"
         >
           <PricingScenarios productData={state.productData} />
         </Card>
@@ -94,7 +94,7 @@ const CalculoSection: React.FC = () => {
         subtitle="Guia rápido para calcular margens de lucro"
         padding="lg"
         shadow="md"
-        className="bg-surface border border-gray-700"
+        className="bg-gray-800 border border-gray-600"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-lg">
           <div className="text-center">

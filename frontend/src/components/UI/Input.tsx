@@ -34,12 +34,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
   };
 
   const variantClasses = {
-    default: 'border border-gray-300 bg-surface',
-    filled: 'border-0 bg-gray-100 focus:bg-surface',
-    outlined: 'border-2 border-gray-300 bg-transparent',
+    default: 'border border-gray-600 bg-gray-800',
+    filled: 'border-0 bg-gray-700 focus:bg-gray-800',
+    outlined: 'border-2 border-gray-600 bg-transparent',
   };
 
-  const baseClasses = 'w-full rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-400';
+  const baseClasses = 'w-full rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-400 text-white';
   const errorClasses = error ? 'border-error focus:ring-error' : '';
   const widthClasses = fullWidth ? 'w-full' : '';
   
@@ -54,7 +54,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
     className
   ].filter(Boolean).join(' ');
 
-  const labelClasses = `block text-body-small font-medium text-gray-700 mb-xs ${size === 'lg' ? 'text-body' : ''}`;
+  const labelClasses = `block text-body-small font-medium text-gray-300 mb-xs ${size === 'lg' ? 'text-body' : ''}`;
   const inputId = props.id || `input-${Math.random().toString(36).substr(2, 9)}`;
   const errorId = error ? `${inputId}-error` : undefined;
   const helperId = helperText ? `${inputId}-helper` : undefined;

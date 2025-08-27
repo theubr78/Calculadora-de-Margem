@@ -126,7 +126,7 @@ const AppContent: React.FC = () => {
   const renderSection = () => {
     switch (activeSection) {
       case 'inicio':
-        return <DashboardSection />;
+        return <DashboardSection onSectionChange={setActiveSection} />;
       case 'produtos':
         return <CalculoSection />; // Produtos e Cálculo são a mesma seção
       case 'calculo':

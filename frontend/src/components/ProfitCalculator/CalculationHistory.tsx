@@ -97,12 +97,12 @@ const CalculationHistory: React.FC<CalculationHistoryProps> = ({
   }
 
   return (
-    <Card title="Histórico de Cálculos" className="mt-lg">
+    <Card title="Histórico de Cálculos" className="mt-lg bg-gray-800 border-gray-600">
       <div className="space-y-md">
         <div className="flex justify-between items-center">
           <Button
             type="button"
-            variant="secondary"
+            variant="ghost"
             size="sm"
             onClick={() => setShowHistory(!showHistory)}
           >
@@ -112,7 +112,7 @@ const CalculationHistory: React.FC<CalculationHistoryProps> = ({
           {history.length > 0 && (
             <Button
               type="button"
-              variant="secondary"
+              variant="ghost"
               size="sm"
               onClick={clearHistory}
             >
@@ -126,21 +126,17 @@ const CalculationHistory: React.FC<CalculationHistoryProps> = ({
             {history.map((item) => (
               <div
                 key={item.id}
-                className={`p-md rounded-lg border ${
-                  item.profitResult.isProfit
-                    ? 'bg-success-light border-success-light'
-                    : 'bg-error-light border-error-light'
-                }`}
+                className="p-md rounded-lg border bg-gray-800 border-gray-600"
               >
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-sm">
-                      <div className="font-medium text-gray-800">
+                      <div className="font-medium text-white">
                         {item.productData.cCodigo} - {item.productData.cDescricao}
                       </div>
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="text-gray-400 hover:text-gray-600 text-body-small"
+                        className="text-gray-300 hover:text-white text-body-small"
                       >
                         ×
                       </button>
@@ -148,41 +144,41 @@ const CalculationHistory: React.FC<CalculationHistoryProps> = ({
                     
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-md text-body-small">
                       <div>
-                        <span className="text-gray-600">Custo:</span>
-                        <div className="font-medium">
+                        <span className="text-gray-300">Custo:</span>
+                        <div className="font-medium text-white">
                           {formatCurrency(item.productData.nCMC)}
                         </div>
                       </div>
                       
                       <div>
-                        <span className="text-gray-600">Venda:</span>
-                        <div className="font-medium">
+                        <span className="text-gray-300">Venda:</span>
+                        <div className="font-medium text-white">
                           {formatCurrency(item.profitResult.salePrice)}
                         </div>
                       </div>
                       
                       <div>
-                        <span className="text-gray-600">
+                        <span className="text-gray-300">
                           {item.profitResult.isProfit ? 'Lucro:' : 'Prejuízo:'}
                         </span>
                         <div className={`font-medium ${
-                          item.profitResult.isProfit ? 'text-success' : 'text-error'
+                          item.profitResult.isProfit ? 'text-green-400' : 'text-red-400'
                         }`}>
                           {formatCurrency(Math.abs(item.profitResult.profitAmount))}
                         </div>
                       </div>
                       
                       <div>
-                        <span className="text-gray-600">Margem:</span>
+                        <span className="text-gray-300">Margem:</span>
                         <div className={`font-medium ${
-                          item.profitResult.isProfit ? 'text-success' : 'text-error'
+                          item.profitResult.isProfit ? 'text-green-400' : 'text-red-400'
                         }`}>
                           {item.profitResult.profitMargin.toFixed(2)}%
                         </div>
                       </div>
                     </div>
                     
-                    <div className="mt-sm text-caption text-gray-500">
+                    <div className="mt-sm text-caption text-gray-400">
                       {formatDate(item.timestamp)} às {item.timestamp.toLocaleTimeString('pt-BR')}
                     </div>
                   </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { calculateProfit, validateSalePrice } from '../../utils/calculations';
 import { formatCurrency, parseCurrency } from '../../utils/formatters';
+import { profitStorage } from '../../utils/storage';
 import { ProfitCalculationForm } from '../../types';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
@@ -81,6 +82,22 @@ const ProfitCalculator: React.FC = () => {
       const salePrice = parseCurrency(formData.salePrice);
       const result = calculateProfit(state.productData.nCMC, salePrice);
       setProfitResult(result);
+      
+      // Save calculation to storage
+      if (result && state.productData) {
+        profitStorage.saveCalculation({
+          productCode: state.productData.cCodigo,
+          productName: state.productData.cDescricao,
+          costPrice: state.productData.nCMC,
+          salePrice: result.salePrice,
+          profitMargin: result.profitMargin,
+          profitAmount: result.profitAmount,
+          timestamp: Date.now(),
+        });
+        
+        // Dispatch custom event to notify other components
+        window.dispatchEvent(new CustomEvent('calculationSaved'));
+      }
     } catch (error) {
       console.error('[ProfitCalculator] Calculation error:', error);
     } finally {
@@ -116,22 +133,22 @@ const ProfitCalculator: React.FC = () => {
   return (
     <div className="space-y-lg">
       {/* Product Summary */}
-      <div className="bg-background border border-gray-200 rounded-lg p-md">
-        <h3 className="font-semibold text-gray-800 mb-sm">Produto Selecionado</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-md text-body-small">
-          <div>
-            <span className="text-gray-600 font-medium">Código:</span>
-            <span className="ml-sm font-mono">{state.productData.cCodigo}</span>
+      <div className="bg-gray-600 border border-gray-500 rounded-lg p-md">
+        <h3 className="font-semibold text-white mb-sm">Produto Selecionado</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-md text-body-small">
+          <div className="flex flex-col space-y-1">
+            <span className="text-gray-300 font-medium">Código:</span>
+            <span className="font-mono text-white break-all">{state.productData.cCodigo}</span>
           </div>
-          <div>
-            <span className="text-gray-600 font-medium">Custo Médio:</span>
-            <span className="ml-sm font-bold text-success">
+          <div className="flex flex-col space-y-1">
+            <span className="text-gray-300 font-medium">Custo Médio:</span>
+            <span className="font-bold text-success">
               {formatCurrency(state.productData.nCMC)}
             </span>
           </div>
-          <div>
-            <span className="text-gray-600 font-medium">Estoque:</span>
-            <span className="ml-sm">{state.productData.fIsico} unidades</span>
+          <div className="flex flex-col space-y-1">
+            <span className="text-gray-300 font-medium">Estoque:</span>
+            <span className="text-white">{state.productData.fIsico} unidades</span>
           </div>
         </div>
       </div>

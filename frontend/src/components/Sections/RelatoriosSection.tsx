@@ -3,9 +3,11 @@ import { Card } from '../Layout';
 import { Typography } from '../UI';
 import { CalculationHistory } from '../ProfitCalculator';
 import { useApp } from '../../context/AppContext';
+import { useCalculationStats } from '../../hooks/useCalculationStats';
 
 const RelatoriosSection: React.FC = () => {
   const { state } = useApp();
+  const { stats, loading } = useCalculationStats();
 
   return (
     <div className="space-y-lg">
@@ -25,7 +27,7 @@ const RelatoriosSection: React.FC = () => {
         subtitle="Visualize todos os cálculos realizados anteriormente"
         padding="lg"
         shadow="md"
-        className="bg-surface border border-gray-700"
+        className="bg-gray-800 border border-gray-600"
       >
         <CalculationHistory 
           currentProduct={state.productData}
@@ -38,7 +40,7 @@ const RelatoriosSection: React.FC = () => {
         <Card
           padding="lg"
           shadow="md"
-          className="bg-surface border border-gray-700"
+          className="bg-gray-800 border border-gray-600"
         >
           <div className="text-center">
             <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-md">
@@ -47,7 +49,7 @@ const RelatoriosSection: React.FC = () => {
               </svg>
             </div>
             <Typography variant="h3" className="text-white mb-xs">
-              0
+              {loading ? '...' : stats.totalCalculations}
             </Typography>
             <Typography variant="body2" color="neutral">
               Total de Cálculos
@@ -58,7 +60,7 @@ const RelatoriosSection: React.FC = () => {
         <Card
           padding="lg"
           shadow="md"
-          className="bg-surface border border-gray-700"
+          className="bg-gray-800 border border-gray-600"
         >
           <div className="text-center">
             <div className="w-12 h-12 bg-success rounded-full flex items-center justify-center mx-auto mb-md">
@@ -67,7 +69,7 @@ const RelatoriosSection: React.FC = () => {
               </svg>
             </div>
             <Typography variant="h3" className="text-white mb-xs">
-              0%
+              {loading ? '...' : `${stats.averageMargin.toFixed(1)}%`}
             </Typography>
             <Typography variant="body2" color="neutral">
               Margem Média
@@ -78,7 +80,7 @@ const RelatoriosSection: React.FC = () => {
         <Card
           padding="lg"
           shadow="md"
-          className="bg-surface border border-gray-700"
+          className="bg-gray-800 border border-gray-600"
         >
           <div className="text-center">
             <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mx-auto mb-md">
@@ -87,7 +89,7 @@ const RelatoriosSection: React.FC = () => {
               </svg>
             </div>
             <Typography variant="h3" className="text-white mb-xs">
-              0
+              {loading ? '...' : stats.uniqueProducts}
             </Typography>
             <Typography variant="body2" color="neutral">
               Produtos Únicos
@@ -102,11 +104,11 @@ const RelatoriosSection: React.FC = () => {
         subtitle="Baixe seus relatórios em diferentes formatos"
         padding="lg"
         shadow="md"
-        className="bg-surface border border-gray-700"
+        className="bg-gray-800 border border-gray-600"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
           <button className="flex items-center justify-center space-x-sm p-md rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors">
-            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             <Typography variant="body1" className="text-white">
@@ -115,7 +117,7 @@ const RelatoriosSection: React.FC = () => {
           </button>
 
           <button className="flex items-center justify-center space-x-sm p-md rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors">
-            <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
             <Typography variant="body1" className="text-white">
@@ -131,7 +133,7 @@ const RelatoriosSection: React.FC = () => {
         subtitle="Como interpretar seus dados de margem"
         padding="lg"
         shadow="md"
-        className="bg-surface border border-gray-700"
+        className="bg-gray-800 border border-gray-600"
       >
         <div className="space-y-md">
           <div className="flex items-start space-x-sm">

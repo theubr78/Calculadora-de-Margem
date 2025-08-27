@@ -9,11 +9,11 @@ interface ProductInfoProps {
 
 const ProductInfo: React.FC<ProductInfoProps> = ({ productData }) => {
   return (
-    <Card title="Informações do Produto" className="bg-background border border-gray-200">
+    <Card title="Informações do Produto" className="bg-gray-800 border border-gray-600">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
         <div className="space-y-sm">
           <div>
-            <label className="block text-body-small font-medium text-gray-600 mb-xs">
+            <label className="block text-body-small font-medium text-gray-300 mb-xs">
               Código
             </label>
             <p className="text-h5 font-mono font-semibold text-primary">
@@ -22,10 +22,10 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ productData }) => {
           </div>
 
           <div>
-            <label className="block text-body-small font-medium text-gray-600 mb-xs">
+            <label className="block text-body-small font-medium text-gray-300 mb-xs">
               Descrição
             </label>
-            <p className="text-h5 font-semibold text-gray-800" title={productData.cDescricao}>
+            <p className="text-h5 font-semibold text-white" title={productData.cDescricao}>
               {truncateText(productData.cDescricao, 50)}
             </p>
           </div>
@@ -33,7 +33,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ productData }) => {
 
         <div className="space-y-sm">
           <div>
-            <label className="block text-body-small font-medium text-gray-600 mb-xs">
+            <label className="block text-body-small font-medium text-gray-300 mb-xs">
               Custo Médio (CMC)
             </label>
             <p className="text-h4 font-bold text-success">
@@ -42,10 +42,10 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ productData }) => {
           </div>
 
           <div>
-            <label className="block text-body-small font-medium text-gray-600 mb-xs">
+            <label className="block text-body-small font-medium text-gray-300 mb-xs">
               Estoque Físico
             </label>
-            <p className="text-h5 font-semibold text-gray-800">
+            <p className="text-h5 font-semibold text-white">
               {formatNumber(productData.fIsico)} unidades
             </p>
           </div>
@@ -53,8 +53,8 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ productData }) => {
       </div>
 
       {/* Additional info */}
-      <div className="mt-md pt-md border-t border-gray-200">
-        <div className="flex flex-wrap gap-md text-body-small text-gray-600">
+      <div className="mt-md pt-md border-t border-gray-600">
+        <div className="flex flex-wrap gap-md text-body-small text-gray-300">
           <span>
             <strong>ID OMIE:</strong> {productData.nIdProduto}
           </span>

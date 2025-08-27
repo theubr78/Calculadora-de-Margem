@@ -36,10 +36,10 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
     switch (resultStatus) {
       case 'excellent':
         return {
-          bgColor: 'bg-success bg-opacity-10',
-          borderColor: 'border-success border-opacity-20',
-          textColor: 'text-success',
-          iconColor: 'text-success',
+          bgColor: 'bg-green-800',
+          borderColor: 'border-green-600',
+          textColor: 'text-white',
+          iconColor: 'text-green-400',
           icon: (
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -49,10 +49,10 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
         };
       case 'good':
         return {
-          bgColor: 'bg-success bg-opacity-10',
-          borderColor: 'border-success border-opacity-20',
-          textColor: 'text-success',
-          iconColor: 'text-success',
+          bgColor: 'bg-green-800',
+          borderColor: 'border-green-600',
+          textColor: 'text-white',
+          iconColor: 'text-green-400',
           icon: (
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -62,10 +62,10 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
         };
       case 'acceptable':
         return {
-          bgColor: 'bg-warning bg-opacity-10',
-          borderColor: 'border-warning border-opacity-20',
-          textColor: 'text-warning',
-          iconColor: 'text-warning',
+          bgColor: 'bg-yellow-800',
+          borderColor: 'border-yellow-600',
+          textColor: 'text-white',
+          iconColor: 'text-yellow-400',
           icon: (
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
@@ -75,10 +75,10 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
         };
       default:
         return {
-          bgColor: 'bg-error bg-opacity-10',
-          borderColor: 'border-error border-opacity-20',
-          textColor: 'text-error',
-          iconColor: 'text-error',
+          bgColor: 'bg-red-800',
+          borderColor: 'border-red-600',
+          textColor: 'text-white',
+          iconColor: 'text-red-400',
           icon: (
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
@@ -134,7 +134,7 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
         {/* Main Metrics Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-lg mb-lg">
           <div className="text-center">
-            <div className="text-body-small font-medium text-gray-600 mb-xs">
+            <div className="text-body-small font-medium text-gray-300 mb-xs">
               Preço de Venda
             </div>
             <div className="text-h3 font-bold text-primary">
@@ -143,7 +143,7 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
           </div>
 
           <div className="text-center">
-            <div className="text-body-small font-medium text-gray-600 mb-xs">
+            <div className="text-body-small font-medium text-gray-300 mb-xs">
               {profitResult.isProfit ? 'Lucro' : 'Prejuízo'}
             </div>
             <div className={`text-h3 font-bold ${
@@ -154,11 +154,11 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
           </div>
 
           <div className="text-center">
-            <div className="text-body-small font-medium text-gray-600 mb-xs">
+            <div className="text-body-small font-medium text-gray-300 mb-xs">
               Margem de Lucro
             </div>
             <div className={`text-h3 font-bold ${
-              profitResult.isProfit ? 'text-success' : 'text-error'
+              profitResult.isProfit ? 'text-green-400' : 'text-red-400'
             }`}>
               {profitResult.profitMargin.toFixed(2)}%
             </div>
@@ -167,23 +167,23 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
 
         {/* Detailed Information */}
         {showDetailedInfo && (
-          <div className="border-t border-gray-200 pt-md">
+          <div className="border-t border-gray-600 pt-md">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md text-body-small">
               <div className="flex justify-between">
-                <span className="font-medium text-gray-600">Custo Unitário:</span>
-                <span className="font-mono">{formatCurrency(productData.nCMC)}</span>
+                <span className="font-medium text-gray-300">Custo Unitário:</span>
+                <span className="font-mono text-white">{formatCurrency(productData.nCMC)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-medium text-gray-600">Markup:</span>
-                <span className="font-mono">{markup.toFixed(1)}%</span>
+                <span className="font-medium text-gray-300">Markup:</span>
+                <span className="font-mono text-white">{markup.toFixed(1)}%</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-medium text-gray-600">ROI:</span>
-                <span className="font-mono">{roi.toFixed(1)}%</span>
+                <span className="font-medium text-gray-300">ROI:</span>
+                <span className="font-mono text-white">{roi.toFixed(1)}%</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-medium text-gray-600">Estoque:</span>
-                <span className="font-mono">{productData.fIsico} un.</span>
+                <span className="font-medium text-gray-300">Estoque:</span>
+                <span className="font-mono text-white">{productData.fIsico} un.</span>
               </div>
             </div>
           </div>
@@ -203,17 +203,17 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
 
       {/* Recommendations */}
       {recommendations.length > 0 && (
-        <div className="bg-background border border-gray-200 rounded-lg p-md">
-          <h4 className="font-semibold text-gray-800 mb-md flex items-center">
-            <svg className="w-5 h-5 mr-sm text-primary" fill="currentColor" viewBox="0 0 20 20">
+        <div className="bg-gray-800 border border-gray-600 rounded-lg p-md">
+          <h4 className="font-semibold text-white mb-md flex items-center">
+            <svg className="w-5 h-5 mr-sm text-blue-400" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
             </svg>
             Recomendações
           </h4>
           <ul className="space-y-sm">
             {recommendations.map((recommendation, index) => (
-              <li key={index} className="flex items-start text-body-small text-gray-700">
-                <span className="mr-sm mt-0.5">•</span>
+              <li key={index} className="flex items-start text-body-small text-gray-300">
+                <span className="mr-sm mt-0.5 text-blue-400">•</span>
                 <span>{recommendation}</span>
               </li>
             ))}
@@ -222,11 +222,11 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
       )}
 
       {/* Quick Actions */}
-      <div className="bg-background border border-gray-200 rounded-lg p-md">
-        <h4 className="font-semibold text-gray-800 mb-md">Ações Rápidas</h4>
+      <div className="bg-gray-800 border border-gray-600 rounded-lg p-md">
+        <h4 className="font-semibold text-white mb-md">Ações Rápidas</h4>
         <div className="flex flex-wrap gap-sm">
           <button
-            className="px-sm py-xs text-caption bg-surface border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+            className="px-sm py-xs text-caption bg-gray-700 border border-gray-600 rounded-md hover:bg-gray-600 transition-colors text-white"
             onClick={async () => {
               try {
                 const text = `Produto: ${productData.cDescricao}\nCusto: ${formatCurrency(productData.nCMC)}\nPreço: ${formatCurrency(profitResult.salePrice)}\nMargem: ${profitResult.profitMargin.toFixed(2)}%\nLucro: ${formatCurrency(profitResult.profitAmount)}`;
@@ -243,7 +243,7 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
             Copiar Resultado
           </button>
           <button
-            className="px-sm py-xs text-caption bg-surface border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+            className="px-sm py-xs text-caption bg-gray-700 border border-gray-600 rounded-md hover:bg-gray-600 transition-colors text-white"
             onClick={() => {
               // Import storage utility and save calculation
               import('../../utils/storage').then(({ profitStorage }) => {
@@ -271,7 +271,7 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
             Salvar Cálculo
           </button>
           <button
-            className="px-sm py-xs text-caption bg-surface border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+            className="px-sm py-xs text-caption bg-gray-700 border border-gray-600 rounded-md hover:bg-gray-600 transition-colors text-white"
             onClick={() => {
               window.print();
             }}

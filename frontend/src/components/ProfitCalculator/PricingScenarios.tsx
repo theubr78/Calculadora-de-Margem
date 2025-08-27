@@ -70,26 +70,26 @@ const PricingScenarios: React.FC<PricingScenariosProps> = ({
       return 'bg-primary bg-opacity-10 border-primary';
     }
     if (scenario.margin < 0) {
-      return 'bg-error bg-opacity-5';
+      return 'bg-red-900 bg-opacity-20';
     }
     if (scenario.margin > 30) {
-      return 'bg-success bg-opacity-5';
+      return 'bg-green-900 bg-opacity-20';
     }
     if (scenario.margin > 15) {
-      return 'bg-warning bg-opacity-5';
+      return 'bg-blue-900 bg-opacity-20';
     }
     return 'bg-gray-800';
   };
 
   const getMarginColor = (margin: number) => {
-    if (margin < 0) return 'text-error';
-    if (margin > 30) return 'text-success';
-    if (margin > 15) return 'text-warning';
+    if (margin < 0) return 'text-red-400';
+    if (margin > 30) return 'text-green-400';
+    if (margin > 15) return 'text-blue-400';
     return 'text-gray-300';
   };
 
   return (
-    <div className="bg-surface border border-gray-700 rounded-lg overflow-hidden">
+    <div className="bg-gray-800 border border-gray-600 rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-gray-800 border-b border-gray-700">
         <h3 className="text-lg font-semibold text-white flex items-center">
           <span className="mr-2">📊</span>
