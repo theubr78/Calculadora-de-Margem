@@ -20,11 +20,11 @@ app.set('trust proxy', 1);
 
 // CORS configuration
 const corsOptions = {
-  origin: '*', // Allow all origins
+  origin: process.env.FRONTEND_URL || '*', // Use frontend URL from env or allow all origins in development
   credentials: true,
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Request-Time']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Request-Time', 'Access-Control-Allow-Origin']
 };
 
 // Security middleware
