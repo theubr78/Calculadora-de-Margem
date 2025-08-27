@@ -18,10 +18,10 @@ const generateRequestId = () => `req_${Date.now()}_${Math.random().toString(36).
 // Trust proxy for rate limiting behind reverse proxy
 app.set('trust proxy', 1);
 
-// CORS configuration
+// CORS configuration - Allow all origins
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || '*', // Use frontend URL from env or allow all origins in development
-  credentials: true,
+  origin: '*', // Allow all origins
+  credentials: false, // Disable credentials for wildcard origin
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Request-Time', 'Access-Control-Allow-Origin']
