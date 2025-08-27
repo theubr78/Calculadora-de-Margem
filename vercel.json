@@ -2,7 +2,7 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
-  "buildCommand": "cd frontend && npm install --legacy-peer-deps && react-scripts build",
+  "buildCommand": "cd frontend && npm install --legacy-peer-deps && npm run build",
   "outputDirectory": "frontend/build",
   "framework": "create-react-app"
 }
