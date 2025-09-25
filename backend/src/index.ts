@@ -18,13 +18,17 @@ const generateRequestId = () => `req_${Date.now()}_${Math.random().toString(36).
 // Trust proxy for rate limiting behind reverse proxy
 app.set('trust proxy', 1);
 
-// CORS configuration - Allow all origins
+// CORS configuration - Allow specific origins
 const corsOptions = {
-  origin: '*', // Allow all origins
-  credentials: false, // Disable credentials for wildcard origin
+  origin: [
+    'https://calculadora-de-margem-six.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173'
+  ],
+  credentials: false,
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Request-Time', 'Access-Control-Allow-Origin']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-Request-Time']
 };
 
 // Security middleware - CORS friendly
@@ -34,22 +38,9 @@ app.use(helmet({
   crossOriginResourcePolicy: false
 }));
 app.use(securityHeaders);
-// Complete CORS bypass - allow everything
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  res.header('Access-Control-Allow-Credentials', 'false');
-  res.header('Access-Control-Max-Age', '86400');
-  
-  // Handle preflight requests
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-  
-  next();
-});
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
 
 // Rate limiting
 app.use('/api', apiLimiter);
