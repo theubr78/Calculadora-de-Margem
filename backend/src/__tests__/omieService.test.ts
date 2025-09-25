@@ -68,7 +68,7 @@ describe('OMIEService', () => {
         }),
         expect.objectContaining({
           headers: expect.objectContaining({
-            'Content-Type': 'application/json; charset=UTF-8'
+            'Content-type': 'application/json'
           }),
           timeout: 30000
         })

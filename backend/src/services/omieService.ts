@@ -164,8 +164,21 @@ export class OMIEService {
    * Validate and transform OMIE API response to our ProductData format
    */
   private validateAndTransformResponse(data: any, productCode: string): ProductData {
-    // Check if required fields exist
-    if (!data.cCodigo && !data.nIdProduto) {
+    // Check if the response indicates a product not found
+    // OMIE returns empty fields when product doesn't exist or has no stock
+    if ((!data.cCodigo || data.cCodigo === '') && 
+        (!data.nIdProduto || data.nIdProduto === 0) &&
+        (!data.cDescricao || data.cDescricao === '') &&
+        (!data.listaEstoque || data.listaEstoque.length === 0)) {
+      throw createError(
+        `Product ${productCode} not found in OMIE or has no stock data`,
+        404,
+        ErrorCodes.PRODUCT_NOT_FOUND
+      );
+    }
+
+    // Check if we have at least some valid data
+    if (!data.cCodigo && !data.nIdProduto && !data.cDescricao) {
       throw createError(
         'Invalid response format from OMIE API',
         502,
